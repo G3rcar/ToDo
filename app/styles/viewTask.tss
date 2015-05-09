@@ -1,0 +1,53 @@
+
+".container" : {
+	backgroundColor: "white"
+}
+
+".labelField": {
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	font: {
+        fontSize: '16dp',
+        fontWeight: 'bold'
+    }	
+}
+
+".taskPanel": {
+	height: "200dp",
+	width: Ti.UI.FILL,
+	top: "20dp",
+	left: "20dp",
+	right: "20dp"
+}
+
+".taskButtonsWrapper": {
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT,
+	top: "30dp",
+	left: "20dp",
+	right: "20dp"
+}
+".taskButtons": {
+	width: Titanium.UI.SIZE
+}
+
+"#txtContent": {
+	width: Ti.UI.FILL,
+	height: "150dp",
+	bottom: "10dp"
+}
+
+"#txtDate": {
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT,
+	font: {
+        fontSize: '12dp'
+    }
+}
+
+".button": {
+	backgroundColor: "#607d8b",
+	color: "white",
+	width: "100dp",
+	right: "5dp",
+	left: "5dp"
+}
