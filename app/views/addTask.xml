@@ -1,0 +1,17 @@
+<Alloy>
+	<Window class="container" layout="vertical">
+		<View class="addTaskForm" layout="vertical">
+			<Label class="labelField" text="What do you have to do?" />
+			<TextArea id="txtContent" />
+			<Label id="txtCreationDate" />
+		</View>
+		
+		<View class="addTaskButtonsWrapper" layout="vertical">
+			<View class="addTaskButtons" layout="horizontal">
+			   	<Button class="button" onClick="saveTask">Save</Button>
+	  			<Button class="button" onClick="cancel">Cancel</Button>	
+			</View>
+		</View>
+		
+	</Window>
+</Alloy>
