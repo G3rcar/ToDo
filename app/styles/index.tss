@@ -2,14 +2,34 @@
 	backgroundColor:"white"
 }
 
-"Label": {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	color: "#000"
+"#newTask": {
+    showAsAction: Titanium.Android.SHOW_AS_ACTION_IF_ROOM,
+    icon: "images/ic_action_content_add.png"
 }
 
-"#label": {
+
+
+".listItem": {
+	backgroundColor: "white"
+}
+
+".elmContent": {
+	color: "#333333",
+	width: Ti.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
+	right: "20dp",
+	left: "20dp",
+	top: "5dp"
+}
+
+".elmDate": {
 	font: {
-		fontSize: 12
-	}
+		fontSize: '12dp'
+	},
+	color: "#888888",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT,
+	width: Ti.UI.FILL,
+	right: "20dp",
+	left: "20dp",
+	top: "5dp"
 }

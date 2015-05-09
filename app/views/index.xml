@@ -1,5 +1,29 @@
 <Alloy>
-	<Window class="container">
-		<Label id="label" onClick="doClick">Hello, World</Label>
+	<Collection id="pendingTask" src="task" />
+	<Window class="container" layout="vertical">
+		
+		<ActionBar id="mainAction" title="ToDo List" />
+        <Menu>
+            <MenuItem id="newTask" title="Add Task" onClick="openTaskForm" />
+        </Menu>
+		
+		
+		
+		<ListView id="pendingList" defaultItemTemplate="listItem" onItemclick="showTask">
+			<Templates>
+				<ItemTemplate name="listItem" class="listItem" layout="vertical" >
+                    <Label bindId="task_content" id="content" class="elmContent" />
+                    <Label bindId="task_date" id="date" class="elmDate" />
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection headerTitle="Pending Tasks" dataCollection="task" 
+            	dataTransform="listTransform" dataFilter="pendingFilter">
+            	<ListItem 
+            		idTask="{id_task}"
+            		task_content:text="{content}" 
+            		task_date:text="{last_update}" />
+            </ListSection>
+		</ListView>
 	</Window>
 </Alloy>
