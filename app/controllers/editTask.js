@@ -1,12 +1,13 @@
 /**
- * Form used to add a new task
+ * Form used to edit a task
  * @author gerardo.calderon
  */
 
 var moment = require('alloy/moment');
 var args = arguments[0] || {};
 
-var task = Alloy.Collections.task;
+var idTask = args.idTask;
+var task;
 var instantDateTime;
 
 
@@ -15,17 +16,13 @@ var instantDateTime;
  * @param Event e
  */
 function saveTask(e){
-	var cont = $.txtContent.value;
-	var date = instantDateTime.format();
-	var thisTask = Alloy.createModel('task', {
-        content: cont,
-        status: "p",
-        last_update: date
-    });
-    task.add(thisTask);
-    thisTask.save();
-    task.fetch();
-    $.addTask.close();
+	task.set({
+		content:$.txtContent.value,
+		last_update:instantDateTime.format()
+	}).save();
+	Alloy.Collections.task.fetch();
+	args.callback();
+	$.editTask.close();
 }
 
 /**
@@ -33,17 +30,24 @@ function saveTask(e){
  * @param Event e
  */
 function cancel(e){
-	$.addTask.close();
+	$.editTask.close();
 }
+
+
 
 /**
  * Function used to init the form. Shows the date/time in a label
  */
 function initForm(){
+	var collection = Alloy.Collections.task;
+	task = collection.get(idTask);
 	instantDateTime = moment();
+	
+	var data = task.toJSON();
+	
+	$.txtContent.setValue(data.content);
 	$.txtCreationDate.text = instantDateTime.format("MMMM Do YYYY, h:mm a");
 }
 
-
 initForm();
-$.addTask.open();
+$.editTask.open();

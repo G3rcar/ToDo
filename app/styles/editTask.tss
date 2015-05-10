@@ -16,7 +16,7 @@
     }	
 }
 
-".addTaskForm": {
+".editTaskForm": {
 	height: "200dp",
 	width: Ti.UI.FILL,
 	top: "20dp",
@@ -24,13 +24,13 @@
 	right: "20dp"
 }
 
-".addTaskButtonsWrapper": {
+".editTaskButtonsWrapper": {
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT,
 	top: "30dp",
 	left: "20dp",
 	right: "20dp"
 }
-".addTaskButtons": {
+".editTaskButtons": {
 	width: Titanium.UI.SIZE
 }
 

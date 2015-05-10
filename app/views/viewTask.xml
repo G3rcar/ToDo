@@ -1,13 +1,18 @@
 <Alloy>
 	<Window class="container" layout="vertical">
+		<ActionBar id="mainAction" title="View Task" onHomeIconItemSelected="onHomeClick" />
+        <Menu>
+            <MenuItem id="editTask" title="Edit Task" onClick="openTaskForm" />
+        </Menu>
+		
 		<View class="taskPanel" layout="vertical">
 			<Label id="txtContent" />
 			<Label id="txtDate" />
 		</View>
 		
 		<View class="taskButtonsWrapper" layout="vertical">
-			<View class="taskButtons" layout="horizontal">
-			   	<Button class="button" onClick="completeTask">Complete</Button>
+			<View class="taskButtons" id="taskButtonsContainer" layout="horizontal">
+			   	<Button id="btnComplete" class="button" onClick="completeTask">Complete</Button>
 	  			<Button class="button" onClick="deleteTask">Delete</Button>	
 			</View>
 		</View>

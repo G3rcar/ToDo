@@ -3,6 +3,15 @@
 	backgroundColor: "white"
 }
 
+"#mainAction": {
+	displayHomeAsUp: true
+}
+
+"#editTask": {
+    showAsAction: Titanium.Android.SHOW_AS_ACTION_IF_ROOM,
+    icon: "images/ic_action_content_create.png"
+}
+
 ".labelField": {
 	width: Ti.UI.FILL,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
@@ -22,7 +31,7 @@
 
 ".taskButtonsWrapper": {
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT,
-	top: "30dp",
+	top: "20dp",
 	left: "20dp",
 	right: "20dp"
 }

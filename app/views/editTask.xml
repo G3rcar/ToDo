@@ -1,15 +1,15 @@
 <Alloy>
 	<Window class="container" layout="vertical">
-		<ActionBar id="mainAction" title="Add Task" onHomeIconItemSelected="cancel" />
+		<ActionBar id="mainAction" title="Edit Task" onHomeIconItemSelected="cancel" />
 		
-		<View class="addTaskForm" layout="vertical">
+		<View class="editTaskForm" layout="vertical">
 			<Label class="labelField" text="What do you have to do?" />
 			<TextArea id="txtContent" />
 			<Label id="txtCreationDate" />
 		</View>
 		
-		<View class="addTaskButtonsWrapper" layout="vertical">
-			<View class="addTaskButtons" layout="horizontal">
+		<View class="editTaskButtonsWrapper" layout="vertical">
+			<View class="editTaskButtons" layout="horizontal">
 			   	<Button class="button" onClick="saveTask">Save</Button>
 	  			<Button class="button" onClick="cancel">Cancel</Button>	
 			</View>
