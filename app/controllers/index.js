@@ -14,14 +14,31 @@ function openTaskForm(e) {
     addTaskWindow.getView().open();
 }
 
+/**
+ * Used to preselect the section of pendingList
+ * @param Event e
+ */
+function showPendingTask(e){
+	var section = $.pendingList.sections[e.sectionIndex];
+	showTask(section,e);
+}
+
+/**
+ * Used to preselect the section of pendingList
+ * @param Event e
+ */
+function showCompletedTask(e){
+	var section = $.completedList.sections[e.sectionIndex];
+	showTask(section,e);
+}
 
 /**
  * Used to show the window to see task and mark it as complete
+ * @param ListSection section
  * @param Event e
  */
-function showTask(e){
-	var section = $.pendingList.sections[e.sectionIndex];
-    var item = section.getItemAt(e.itemIndex);
+function showTask(section,e){
+	var item = section.getItemAt(e.itemIndex);
     var args = {
     	idTask: item.properties.idTask
     };
@@ -36,7 +53,8 @@ function showTask(e){
  */
 function listTransform(model){
 	var newItem = model.toJSON();
-	newItem.last_update = "Updated " + moment(newItem.last_update).calendar().toLowerCase();
+	var text = (newItem.status == "c") ? "Completed " : "Updated ";
+	newItem.last_update = text + moment(newItem.last_update).calendar().toLowerCase();
 
 	return newItem;
 }
@@ -47,6 +65,14 @@ function listTransform(model){
  */
 function pendingFilter(collection){
 	return collection.where({ status:'p' });
+}
+
+/**
+ * Filtering the collection, just show the tasks marked as completed
+ * @param Collection collection
+ */
+function completedFilter(collection){
+	return collection.where({ status:'c' });
 }
 
 

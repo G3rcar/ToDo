@@ -1,29 +1,55 @@
 <Alloy>
 	<Collection id="pendingTask" src="task" />
-	<Window class="container" layout="vertical">
-		
+	<TabGroup backgroundColor="white" >
 		<ActionBar id="mainAction" title="ToDo List" />
         <Menu>
             <MenuItem id="newTask" title="Add Task" onClick="openTaskForm" />
         </Menu>
+        
+		<Tab id="pendingTasksTab" title="Pending" >
+			<Window class="container" layout="vertical">
+				<ListView id="pendingList" defaultItemTemplate="listItem" onItemclick="showPendingTask">
+					<Templates>
+						<ItemTemplate name="listItem" class="listItem" layout="vertical" >
+		                    <Label bindId="task_content" id="content" class="elmContent" />
+		                    <Label bindId="task_date" id="date" class="elmDate" />
+		                </ItemTemplate>
+		            </Templates>
+		            
+		            <SearchBar barColor="#FFFFFF" />
+		            <ListSection headerTitle="Pending Tasks" dataCollection="task" 
+		            	dataTransform="listTransform" dataFilter="pendingFilter">
+		            	<ListItem 
+		            		idTask="{id_task}"
+		            		task_content:text="{content}" 
+		            		task_date:text="{last_update}"
+		            		searchableText="{content}" />
+		            </ListSection>
+				</ListView>
+			</Window>
+		</Tab>
 		
-		
-		
-		<ListView id="pendingList" defaultItemTemplate="listItem" onItemclick="showTask">
-			<Templates>
-				<ItemTemplate name="listItem" class="listItem" layout="vertical" >
-                    <Label bindId="task_content" id="content" class="elmContent" />
-                    <Label bindId="task_date" id="date" class="elmDate" />
-                </ItemTemplate>
-            </Templates>
-            
-            <ListSection headerTitle="Pending Tasks" dataCollection="task" 
-            	dataTransform="listTransform" dataFilter="pendingFilter">
-            	<ListItem 
-            		idTask="{id_task}"
-            		task_content:text="{content}" 
-            		task_date:text="{last_update}" />
-            </ListSection>
-		</ListView>
-	</Window>
+		<Tab id="completedTasksTab" title="Completed" >
+			<Window class="container" layout="vertical">
+				<ListView id="completedList" defaultItemTemplate="listItem" onItemclick="showCompletedTask">
+					<Templates>
+						<ItemTemplate name="listItem" class="listItem" layout="vertical" >
+		                    <Label bindId="task_content" id="content" class="elmContent" />
+		                    <Label bindId="task_date" id="date" class="elmDate" />
+		                </ItemTemplate>
+		            </Templates>
+		            
+		            <SearchBar barColor="#FFFFFF" />
+		            <ListSection headerTitle="Completed Tasks" dataCollection="task" 
+		            	dataTransform="listTransform" dataFilter="completedFilter">
+		            	<ListItem 
+		            		idTask="{id_task}"
+		            		task_content:text="{content}" 
+		            		task_date:text="{last_update}"
+		            		searchableText="{content}" />
+		            </ListSection>
+				</ListView>
+			</Window>
+		</Tab>
+	</TabGroup>
 </Alloy>
