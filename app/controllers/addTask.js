@@ -24,7 +24,7 @@ function saveTask(e){
     });
     task.add(thisTask);
     thisTask.save();
-    task.fetch();
+    task.fetch({ query:'SELECT * FROM task ORDER BY last_update DESC' });
     $.addTask.close();
 }
 

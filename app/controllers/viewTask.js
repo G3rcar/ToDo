@@ -22,19 +22,27 @@ function openTaskForm(e) {
 }
 
 
+/**
+ * Function used to mark a task as completed
+ * @param Event e
+ */
 function completeTask(e){
 	task.set({ 
 		status:'c',
 		last_update:moment().format() 
 	}).save();
-	Alloy.Collections.task.fetch();
+	Alloy.Collections.task.fetch({ query:'SELECT * FROM task ORDER BY last_update DESC' });
 	$.viewTask.close();
 }
 
+/**
+ * Function used to delete a task
+ * @param Event e
+ */
 function deleteTask(e){
 	Alloy.Collections.task.remove(task);
 	task.destroy();
-	Alloy.Collections.task.fetch();
+	Alloy.Collections.task.fetch({ query:'SELECT * FROM task ORDER BY last_update DESC' });
 	$.viewTask.close();
 }
 
@@ -46,6 +54,10 @@ function onHomeClick(e){
 }
 
 
+/**
+ * Function used to load the data from model
+ * @param Event e
+ */
 function initPanel(){
 	var collection = Alloy.Collections.task;
 	task = collection.get(idTask);

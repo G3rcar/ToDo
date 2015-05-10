@@ -20,7 +20,7 @@ function saveTask(e){
 		content:$.txtContent.value,
 		last_update:instantDateTime.format()
 	}).save();
-	Alloy.Collections.task.fetch();
+	Alloy.Collections.task.fetch({ query:'SELECT * FROM task ORDER BY last_update DESC' });
 	args.callback();
 	$.editTask.close();
 }
